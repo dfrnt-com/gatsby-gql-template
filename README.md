@@ -28,10 +28,19 @@ npm init gatsby -ts
 #  ◉ Add Markdown and MDX support
 #  ◯ Add Markdown support (without MDX)
 
-
 ```
 
 [Follow the instructions to setup Gatsby with Tailwind CSS](https://tailwindcss.com/docs/guides/gatsby)
 
 ```
+# Skip the gatsby setup step, we already did it with the above Typescript setup
+# Add necessary overrides for the dependencies (in package.json)
+npm install @mdx-js/react@2
+npm install @mdx-js/mdx@2
+npm install tailwindcss postcss autoprefixer gatsby-plugin-postcss
+npm update
+npx tailwindcss init -p
+# Configure the files as instructed by the Tailwind CSS instructions
+# Start gatsby develop and connect to the suggested localhost address
+npx gatsby develop
 ```
