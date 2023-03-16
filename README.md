@@ -44,3 +44,25 @@ npx tailwindcss init -p
 # Start gatsby develop and connect to the suggested localhost address
 npx gatsby develop
 ```
+
+For good measure, the index and 404 pages were updated with a Tailwind CSS style.
+
+## Configure rendering template for blogposts
+
+Now add additional tailwind css classes for prose and some additional utilities:
+
+```
+npm install -D @tailwindcss/forms @tailwindcss/line-clamp @tailwindcss/typography
+```
+
+
+The added file `gatsby-node.ts` ensures pages will be rendered and mounted through the slug pointer. The `gatsby-browser.tsx` file provides the tailwindcss styles, and also a wrapper that can be handy to put seo and similar things in.
+
+We also add a `posts` directory and a corresponding `gatsby-source-filesystem` entry in `gatsby-config.ts` for it so that the posts can be found. Additionally, the BlogLayout and PageLayouts were created to abstract some of the common elements across the pages.
+
+## Next, let's connect the new Gatsby page to DFRNT with GraphQL
+
+
+
+
+
