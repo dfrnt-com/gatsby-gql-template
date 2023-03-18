@@ -3,3 +3,5 @@ node_modules.old/
 .cache/
 public
 src/gatsby-types.d.ts
+.env.development
+.env.production

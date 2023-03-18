@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Link, HeadFC, PageProps } from "gatsby";
-import PageLayout from "../layouts/PageLayout/PageLayout";
+import BaseLayout from "../layouts/BaseLayout/BaseLayout";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
-    <PageLayout>
+    <BaseLayout>
       <div className="lg:pr-8 lg:pt-4">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Page not found</h1>
@@ -23,7 +23,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </BaseLayout>
   );
 };
 

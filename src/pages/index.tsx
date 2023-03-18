@@ -1,6 +1,7 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import PageLayout from "../layouts/PageLayout/PageLayout";
+import BaseLayout from "../layouts/BaseLayout/BaseLayout";
+import { graphql, Link } from "gatsby";
 
 export function classNames(...classes: Array<string | boolean>) {
   return classes.filter(Boolean).join(" ");
@@ -58,10 +59,13 @@ const links = [
 ];
 
 const IndexPage: React.FC<PageProps> = (props) => {
-  console.log(props);
+  const data: any = props.data;
+  const allSitePages: any = data?.allSitePage;
+  const fetchedBlogposts = (allSitePages?.edges ?? []).map((edge: any) => edge?.node);
+  console.log(fetchedBlogposts);
   return (
-    <PageLayout>
-      <div className="lg:pr-8 lg:pt-4">
+    <BaseLayout>
+      <div className="px-4 lg:pt-4">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Congratulations</h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">— you just made a Gatsby site! 🎉🎉🎉</p>
@@ -75,16 +79,16 @@ const IndexPage: React.FC<PageProps> = (props) => {
         <div className="mx-auto max-w-2xl text-center mt-12">
           <span className="isolate inline-flex rounded-md shadow-sm">
             {docLinks.map((doc, index) => (
-              <a
+              <Link
                 key={doc.url}
                 className={classNames(
                   (index !== 0 && index !== docLinks.length && "") || index === 0 ? "rounded-l-md" : "rounded-r-md",
                   "relative inline-flex items-center  bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
                 )}
-                href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
+                to={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
               >
                 {doc.text}
-              </a>
+              </Link>
             ))}
           </span>
         </div>
@@ -101,6 +105,25 @@ const IndexPage: React.FC<PageProps> = (props) => {
             ))}
           </dl>
         </div>
+
+        <div className="mx-auto mt-4 max-w-2xl lg:max-w-4xl">
+          <div className="prose mt-16 max-w-2xl sm:mt-20 lg:mt-24">
+            <h2 className="mb-4">Blogposts in the Data Product</h2>
+          </div>
+          <dl className="grid max-w-xl grid-cols-1 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+            {fetchedBlogposts.map((post: any) => (
+              <div key={post?.path} className="relative">
+                <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <Link to={`${post?.path}?utm_source=starter-dfrnt&utm_medium=start-page&utm_campaign=minimal-dfrnt-ts`}>
+                    {post?.pageContext?.frontmatter?.title}
+                  </Link>
+                </dt>
+                <dd className="mt-2 text-base leading-7 text-gray-600">{post?.pageContext?.frontmatter?.excerpt}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
         <div className="w-full my-16 justify-around">
           <img
             className="mx-auto"
@@ -110,10 +133,30 @@ const IndexPage: React.FC<PageProps> = (props) => {
         </div>
       </div>
       {props.children}
-    </PageLayout>
+    </BaseLayout>
   );
 };
 
 export default IndexPage;
+
+export const pageQuery = graphql`
+  #query ($id: String!) {
+  query {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+    allSitePage {
+      edges {
+        node {
+          id
+          path
+          pageContext
+        }
+      }
+    }
+  }
+`;
 
 export const Head: HeadFC = () => <title>Home Page</title>;

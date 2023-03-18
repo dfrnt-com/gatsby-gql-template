@@ -15,30 +15,23 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },
-  "overrides": {
-    "@mdx-js/mdx": {
-      "react": "^18.2.0"
-    },
-    "@mdx-js/react": {
-      "react": "^18.2.0"
-    }
-  },
   "dependencies": {
-    "@mdx-js/mdx": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.7.0",
     "gatsby-plugin-image": "^3.7.0",
     "gatsby-plugin-manifest": "^5.7.0",
-    "gatsby-plugin-mdx": "^5.7.0",
     "gatsby-plugin-postcss": "^6.7.0",
     "gatsby-plugin-react-helmet": "^6.7.0",
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-plugin-sitemap": "^6.7.0",
     "gatsby-source-filesystem": "^5.7.0",
+    "gatsby-source-graphql": "^5.7.0",
     "gatsby-transformer-sharp": "^5.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-markdown": "^8.0.5",
+    "remark-gfm": "^3.0.1",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",

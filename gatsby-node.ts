@@ -1,39 +1,63 @@
 import type { GatsbyNode } from "gatsby";
+import path from "path";
+import slugify from "slugify";
 
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  const result: any = await graphql(`
+  const resultBlogpost: any = await graphql(`
     query {
-      allMdx {
-        nodes {
-          id
-          frontmatter {
-            slug
+      dfrnt {
+        Blogpost {
+          _id
+          _type
+          label
+          statement {
+            markdown
           }
-          internal {
-            contentFilePath
+          frontmatter {
+            excerpt
+            slug
+            title
+          }
+          relatedPages {
+            _id
+            _type
+            frontmatter {
+              excerpt
+              slug
+              title
+            }
+            label
+          }
+          opengraphMetadata {
+            image
+            title
+            type
+            url
           }
         }
       }
     }
   `);
 
-  if (result.errors) {
-    reporter.panicOnBuild("Error loading MDX result", result.errors);
+  if (resultBlogpost.errors) {
+    reporter.panicOnBuild("Error loading graphql content", resultBlogpost.errors);
   }
+  const Blogpost = resultBlogpost?.data?.dfrnt?.Blogpost;
 
-  const posts = result.data.allMdx.nodes;
-
-  posts.forEach((node: any) => {
+  Blogpost?.forEach((node: any) => {
+    reporter.log(`slug ${slugify(node.label)}`);
     createPage({
-      // As mentioned above you could also query something else like frontmatter.title above and use a helper function
-      // like slugify to create a slug
-      path: node.frontmatter.slug,
-      // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
-      component: node.internal.contentFilePath,
-      // You can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
+      path: node.frontmatter.slug ?? `blog/${slugify(node.label, { lower: true })}`,
+      component: path.resolve(`./src/layouts/BlogLayout/BlogLayout.tsx`),
+      context: {
+        ...node,
+        relatedPages: node.relatedPages.map((relatedPage: any) => ({
+          ...relatedPage,
+          id: relatedPage._id.toString().replace("terminusdb:///data/", ""),
+        })),
+        id: node._id.toString().replace("terminusdb:///data/", ""),
+      },
     });
   });
 };

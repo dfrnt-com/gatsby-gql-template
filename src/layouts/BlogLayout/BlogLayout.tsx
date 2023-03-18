@@ -1,24 +1,20 @@
 import * as React from "react";
-import { PageProps } from "gatsby";
-import PageLayout from "../PageLayout/PageLayout";
-import { classNames } from "../../pages";
+import { Link, PageProps } from "gatsby";
+import BaseLayout from "../BaseLayout/BaseLayout";
+import RenderMarkdown from "../../components/Markdown";
+import Title from "../../components/Title";
 
 const BlogLayout: React.FC<PageProps> = (props): JSX.Element => {
-  const { pageContext }: { pageContext: any } = props;
-
+  const { pageContext } = props;
+  const node: any = pageContext;
   return (
-    <PageLayout>
-      <div className="text-center">
-        <p className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{pageContext.frontmatter.title}</p>
-      </div>
-      <article
-        className={classNames(
-          "prose prose-slate sm:prose-sm lg:prose-lg prose-h1:text-slate-700 prose-h2:uppercase prose-h2:text-slate-600 prose-h3:text-slate-600"
-        )}
-      >
-        {props.children}
-      </article>
-    </PageLayout>
+    <BaseLayout>
+      <Title title={node.label} />
+      <span className="text-base font-light leading-7 text-gray-700">
+        <Link to={`/`}><span className="text-base font-semibold leading-7 text-gray-500">&lt;&lt;</span> Back to Home</Link>
+      </span>
+      <RenderMarkdown markdown={node.statement?.markdown} />
+    </BaseLayout>
   );
 };
 
