@@ -1,5 +1,6 @@
-# gatsby-gql-template
-Gatsby template with TerminusDB GraphQL and Tailwind CSS
+# Gatsby template for TerminusDB Data Products
+
+Gatsby template with TerminusDB GraphQL and Tailwind CSS.
 
 Using this template, a statically built website can be built from a TerminusDB data product. In this base version, a customizable GraphQL query is used to pull blogposts from a data product based on data product templates provided by DFRNT.
 
