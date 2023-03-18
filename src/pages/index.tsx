@@ -62,7 +62,6 @@ const IndexPage: React.FC<PageProps> = (props) => {
   const data: any = props.data;
   const allSitePages: any = data?.allSitePage;
   const fetchedBlogposts = (allSitePages?.edges ?? []).map((edge: any) => edge?.node);
-  console.log(fetchedBlogposts);
   return (
     <BaseLayout>
       <div className="px-4 lg:pt-4">
