@@ -24,14 +24,14 @@ To get started, you need the following:
 
 Start the development server (you need the `.env.development`):
 
-```
+```sh
 $ npm update
 $ npm install
 $ npx gatsby develop
 ```
 
 To build for production (you need the `.env.production`):
-```
+```sh
 $ npx gatsby build
 ```
 
@@ -111,6 +111,7 @@ classDiagram
 
 ### Example Blogpost entry
 
+```json
 {
   "@type": "Blogpost",
   "@id": "Blogpost/c49b43d0ac1023450c58dbd80c22792a19c0d37b1d9e486b6d834686c26c9388",
@@ -134,6 +135,7 @@ classDiagram
   },
   "relatedPages": "Blogpost/c49b43d0ac1023450c58dbd80c22792a19c0d37b1d9e486b6d834686c26c9388"
 }
+```
 
 ### Improvement opportunities
 
