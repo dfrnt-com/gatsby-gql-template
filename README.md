@@ -62,6 +62,7 @@ classDiagram
   `Blogpost` --* `Markdown` : composes
   `Blogpost` --* `OpenGraphMetadata` : composes
   `Blogpost` --* `Frontmatter` : composes
+  `OpenGraphMetadata` --> `OpenGraphType` : oneOf
   class `Blogpost` {
     ♢label ？  ＜xsd∶string＞
     ♢statement ？  ＜Markdown＞
