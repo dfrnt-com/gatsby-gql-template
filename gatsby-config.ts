@@ -29,7 +29,7 @@ const config: GatsbyConfig = {
         // For Localhost: Configure using the following keys to connect, and set the 
         // Authorization header below to Basic instead of Token.
         // Put a base64 encoded "user:pass" string in `.env.development` for TERMINUSDB_TOKEN
-        // url: "http://localhost:6363/api/graphql/:instance/:dataproduct",
+        // url: "http://127.0.0.1:6363/api/graphql/:instance/:dataproduct",
         headers: {
           Authorization: `Token ${process.env.TERMINUSDB_TOKEN}`,
         },
