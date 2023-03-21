@@ -146,8 +146,8 @@ This initial version does not make use of the built-in Markdown transformations 
 
 It would be great to get support for MDX some day. The MDX team are working on more generic support, basesd on GitHub conversation linked [TECH_SETUP.md](./TECH_SETUP.md). Hopefully this will be possible in a near future in Gatsby and we can update this template accordingly.
 
-## Licence and support
+## License and support
 
 This template is Copyright 2023 [DFRNT AB](https://dfrnt.com), and licensed under the MIT license. 
 
-The template is offered free of charge to the TerminusDB community and is unsupported. We do welcome issue and pull requests to help improve the template and documentation for it.
+The template is offered free of charge to the TerminusDB community and comes with no support. We do welcome issue and pull requests to help improve the template and documentation for it.
