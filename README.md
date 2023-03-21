@@ -26,13 +26,15 @@ To get started, you need the following:
 Start the development server (you need the `.env.development`):
 
 ```sh
-$ npm update
 $ npm install
+$ npm update
 $ npx gatsby develop
 ```
 
 To build for production (you need the `.env.production`):
 ```sh
+$ npm install
+$ npm update
 $ npx gatsby build
 ```
 

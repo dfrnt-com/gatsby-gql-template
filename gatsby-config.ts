@@ -16,14 +16,20 @@ const config: GatsbyConfig = {
       options: {
         typeName: "DFRNT",
         fieldName: "dfrnt",
-        url: "https://dfrnt.com/api/hosted/RustyGearsInc/api/graphql/RustyGearsInc/website",
+        url: "https://qa.dfrnt.dev/api/hosted/RustyGearsInc/api/graphql/RustyGearsInc/website",
         // Remember to create the .env.development file with the token!
         // Or add it to your GitHub secrets if building automatically.
         //
-        // Configure using the following keys to connect to DFRNT:
+        // For DFRNT: Configure using the following keys to connect:
         // url: "https://dfrnt.com/api/hosted/:instance/api/graphql/:instance/:dataproduct",
-        // Configure using the following keys to connect to TerminusCMS:
+        //
+        // For TerminusCMS: Configure using the following keys to connect:
         // url: "https://cloud.terminusdb.com/:instance/api/graphql/:instance/:dataproduct",
+        //
+        // For Localhost: Configure using the following keys to connect, and set the 
+        // Authorization header below to Basic instead of Token.
+        // Put a base64 encoded "user:pass" string in `.env.development` for TERMINUSDB_TOKEN
+        // url: "http://localhost:6363/api/graphql/:instance/:dataproduct",
         headers: {
           Authorization: `Token ${process.env.TERMINUSDB_TOKEN}`,
         },
